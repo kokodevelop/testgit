@@ -6,7 +6,7 @@ const pool = require('./config/db');
   try {
     const hash = await bcrypt.hash('admin123', 10);
     await pool.execute(
-      `INSERT INTO Utilisateurs (Login, MotDePasse, NomComplet, Role) VALUES (?, ?, ?, ?)
+      `INSERT INTO Utilisateurs, TestTable (Login, MotDePasse, NomComplet, Role) VALUES (?, ?, ?, ?)
        ON DUPLICATE KEY UPDATE MotDePasse = VALUES(MotDePasse)`,
       ['admin', hash, 'Administrateur', 'ADMIN']
     );
