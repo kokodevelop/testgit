@@ -8,7 +8,7 @@ const pool = require('./config/db');
     await pool.execute(
       `INSERT INTO Utilisateurs, TestTable (Login, MotDePasse, NomComplet, Role) VALUES (?, ?, ?, ?)
        ON DUPLICATE KEY UPDATE MotDePasse = VALUES(MotDePasse)`,
-      ['admin', hash, 'Administrateur', 'ADMIN']
+      ['admin', hash, 'Administrateur', 'ADMIN', [SUPERVISEUR]]
     );
     console.log('Utilisateur admin créé/mis à jour. Login: admin / Mot de passe: admin123');
     process.exit(0);
